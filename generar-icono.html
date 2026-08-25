@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Ícono - Stoch Calculator</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      gap: 20px;
+    }
+    canvas {
+      width: 256px;
+      height: 256px;
+      border-radius: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+    button {
+      background: #32936F;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+    button:active { transform: scale(0.96); }
+  </style>
+</head>
+<body>
+
+  <h2>Ícono Stoch Calculator</h2>
+  <canvas id="canvas" width="512" height="512"></canvas>
+  <button onclick="downloadPNG()">Descargar icon.png (512x512)</button>
+
+  <script>
+    const svgData = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+      <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#1C1C20"/>
+          <stop offset="100%" stop-color="#0A0A0C"/>
+        </linearGradient>
+        <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#56C596"/>
+          <stop offset="100%" stop-color="#32936F"/>
+        </linearGradient>
+        <linearGradient id="btnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#2C2C32"/>
+          <stop offset="100%" stop-color="#18181C"/>
+        </linearGradient>
+      </defs>
+      <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+      <rect x="8" y="8" width="496" height="496" rx="104" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="4"/>
+      <rect x="96" y="88" width="320" height="104" rx="28" fill="#000000" fill-opacity="0.5" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
+      <circle cx="132" cy="140" r="6" fill="#56C596"/>
+      <rect x="152" y="136" width="100" height="8" rx="4" fill="#FFFFFF" fill-opacity="0.2"/>
+      <rect x="300" y="124" width="80" height="32" rx="12" fill="url(#accentGrad)"/>
+      <path d="M330 136h20M330 144h20" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="152" cy="264" r="36" fill="url(#btnGrad)"/>
+      <circle cx="256" cy="264" r="36" fill="url(#btnGrad)"/>
+      <circle cx="360" cy="264" r="36" fill="url(#btnGrad)"/>
+      <circle cx="152" cy="368" r="36" fill="url(#btnGrad)"/>
+      <circle cx="256" cy="368" r="36" fill="url(#btnGrad)"/>
+      <rect x="324" y="332" width="72" height="108" rx="36" fill="url(#accentGrad)"/>
+      <path d="M144 264h16M152 256v16" stroke="#8E8E93" stroke-width="4" stroke-linecap="round"/>
+      <path d="M248 264h16" stroke="#8E8E93" stroke-width="4" stroke-linecap="round"/>
+      <path d="M352 256l16 16M368 256l-16 16" stroke="#8E8E93" stroke-width="4" stroke-linecap="round"/>
+      <path d="M144 368h16M152 360a2 2 0 1 0 0 .1M152 376a2 2 0 1 0 0 .1" stroke="#8E8E93" stroke-width="4" stroke-linecap="round"/>
+      <path d="M248 374l16-12M248 362a2 2 0 1 0 0 .1M264 374a2 2 0 1 0 0 .1" stroke="#8E8E93" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M346 378h28M346 392h28" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+    </svg>`;
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0);
+    };
+    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+
+    function downloadPNG() {
+      const link = document.createElement('a');
+      link.download = 'icon.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>
