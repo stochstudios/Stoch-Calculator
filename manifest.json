@@ -1,0 +1,21 @@
+{
+  "short_name": "Stoch Calculator",
+  "name": "Stoch Calculator",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3408/3408591.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3408/3408591.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#111318",
+  "theme_color": "#111318",
+  "display": "standalone",
+  "orientation": "portrait"
+}

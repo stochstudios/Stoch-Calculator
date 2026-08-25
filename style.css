@@ -1,0 +1,167 @@
+:root {
+  --bg: #000000;
+  --btn-num: #1c1c1e;
+  --btn-top: #3a3a3c;
+  --btn-op: #3a3a3c;
+  --btn-equals: #4f7978; /* Verde turquesa exacto Infinix XOS */
+  --text-main: #ffffff;
+  --text-sub: #8e8e93;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.calculator {
+  width: 100%;
+  max-width: 412px;
+  height: 100vh;
+  max-height: 870px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 20px 24px 20px;
+}
+
+/* Header */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.icon-btn, .top-pill {
+  background: #1c1c1e;
+  border: none;
+  border-radius: 20px;
+}
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  color: #c7c7cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-pill {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+}
+
+.pill-icon {
+  background: none;
+  border: none;
+  color: #c7c7cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Display */
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  padding: 16px 4px;
+}
+
+.history {
+  color: var(--text-sub);
+  font-size: 1.2rem;
+  min-height: 1.4em;
+}
+
+.expression {
+  font-size: 3.2rem;
+  font-weight: 300;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.result {
+  font-size: 1.8rem;
+  color: var(--text-sub);
+  min-height: 1.2em;
+}
+
+/* Panel Científico Superior */
+.sci-panel {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+  transition: all 0.25s ease;
+  max-height: 50px;
+  opacity: 1;
+}
+
+.sci-panel.hidden {
+  max-height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-sci {
+  height: 42px;
+  border-radius: 12px;
+  background: #1c1c1e;
+  color: #8e8e93;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Keypad Circular Nativo */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.btn {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  filter: brightness(1.35);
+  transform: scale(0.96);
+}
+
+.btn-num { background: var(--btn-num); }
+.btn-top, .btn-op { background: var(--btn-top); }
+.btn-equals { background: var(--btn-equals); }
+.btn-sci-toggle { color: #8e8e93; }
